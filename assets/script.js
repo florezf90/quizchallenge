@@ -58,7 +58,6 @@ function test () {
              questions.appendChild(optionD);  
 
              var tracker = document.createElement("p");
-             tracker.textContent = "your current score is " + currentscore;
              questions.appendChild(tracker);  
 
              var input = document.createElement("input");
@@ -84,7 +83,7 @@ function test () {
             // The following array, function & for loop of code will present to the user
             // a new question & answers every time they click on a button
              var Answers = [optionA, optionB, optionC, optionD];
-             var correctanswer = [answersA, answersb, answersc, answersb, answersd, answersc, answersA, answersA, answersc, answersd];
+             var correctanswer = ["question 1", "question 2", "question 2", "question 4","question 1", "question 2", "question 2", "question 1", "question 2", "question 2"];
              var buttonsclicked = [];
 
 
@@ -106,9 +105,16 @@ function test () {
              for (let i = 0; i < Answers.length; i++) {
                 Answers[i].addEventListener("click", change)
                 Answers[i].addEventListener("click", function inputracker (event){
+                    buttonsclicked.push(event.target.textContent);
+                    if (buttonsclicked.textContent === correctanswer.textContent) {
+                        console.log("working");
+                        console.log(buttonsclicked);
+                         currentscore = currentscore + 1;
+                         tracker.textContent = "your current score is " + currentscore;
 
-                    buttonsclicked.push(event.target.optionB);
-                    console.log(buttonsclicked);
+                        }
+
+                    
                 })
                 
              }
