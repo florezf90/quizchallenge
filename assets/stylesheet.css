@@ -74,10 +74,37 @@ body h3 {
 }
 
 #aa {
-    margin-left:10.2%;
-    margin-top: 1%;
-    padding: 0.7%;
-    position: absolute;
+  
     display: none;
+     margin: 4%;
 }
 
+
+.USERPROMPT {
+flex-basis: content;
+}
+
+#end {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    padding-left: 9%;
+
+}
+
+.leaderboard {
+
+    margin-top: 40%;
+
+}
+
+.attempt {
+    padding: 5%;
+}
+
+.attempt:first-child {
+
+    margin-top: 30%;
+
+}
