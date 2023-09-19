@@ -52,18 +52,18 @@ header {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-top: 5rem;
+    padding-top: 4rem;
     
 }
 
 
 .questions > button {
     padding: 1%;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
 }
 
 body h3 {
-    font-size: 5rem;
+    font-size: 4rem;
     padding-top: 1%;
     text-align: center;
 }
@@ -107,4 +107,30 @@ flex-basis: content;
 
     margin-top: 30%;
 
+}
+
+
+
+.refresh {
+    margin-top: 40%;
+visibility: hidden;
+margin-right: 80%;
+}
+
+.clear {
+    margin-top: 40%;
+
+    visibility: hidden;
+    margin-left: 50%;
+
+}
+
+.leaderboard li {
+  padding-top: 20%;
+}
+
+.interactivity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
