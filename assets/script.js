@@ -31,7 +31,7 @@ var setquestions = [" Inside which HTML element do we put the JavaScript? ",  //
       "var colors = 1 = (“red”), 2 = (“green”)","Math.rnd(7.25)", "onchange","var carName", ];
 
       var answersc = ["<js>", "function = myFunction()", "call myFunction()","if i = 5 then","for (i <= 5; i++)","//This is a comment",
-      "3 = (blue, red, white ) var colors", "Math.round(7.25)", "onmouseover","variable carName;", ];
+      "3 = (blue, red, white ) var colors", "Math.round(7.25)","onmouseover","variable carName;", ];
 
       var answersd = ["<scripting>", "func myFunction()", "call function myFunction()","if (i == 5)","for (i = 0; i <= 5)","**This is a comment**",
       "var colors = [“red”, “green”, “blue”]","rnd(7.25)", "onclick","v (carName);", ];
@@ -78,7 +78,7 @@ function test () {
                           // following code creates the timer
                           var timer = document.createElement("h3");
                           body.appendChild(timer);
-                          var timeleft = 110;
+                          var timeleft = 60;
              
                           function seTime() {
                              var timeinterval = setInterval(() => {
