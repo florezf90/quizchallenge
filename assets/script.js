@@ -8,28 +8,42 @@ var title = document.querySelector("h1");
 var presentation = document.querySelector("#presentation");
 var buttons = document.querySelector(".bottoms");
 var body = document.querySelector("body");
+var goback = document.querySelector(".refresh");
+var clear = document.querySelector(".clear")
 
 // setting up the questions and possible answers for each one of them
 
-var setquestions = [" question 1", "question 2", "question 3", "question 4", "question 5", "question 6", "question 7",
-      "question 8", "question 9", "question 10", ];
+var setquestions = [" Inside which HTML element do we put the JavaScript? ",  // question 1
+   "How do you create a function in JavaScript?",                             // question 2
+   "How do you call a function named “myFunction”?",                          // question 3
+    "How do you start an IF statement in JavaScript?",                        // question 4
+    "How do you start a FOR loop in JavaScript?",                             // question 5
+    "How can you add a comment in JavaScript?",                               // question 6
+    "What is the correct way to write a JavaScript array?",                   // question 7
+      "How do you round the number 7.25, to the nearest integer?",            // question 8
+      "What event occurs when the user clicks on an HTML element?",           // // question 9
+      "How do you declare a JavaScript variable?", ];                         // question 10
 
-      var answersA = ["question 1", "question 2","question 3","question 4","question 5","question 6","question 7","question 8",
-      "question 9","question 10", ];
+      var answersA = ["<script>", "function myFunction()", "myFunction","if i = 5","for i = 1 to 5","This is a comment",
+      "var colors = (1:”red”, 2:”green”, 3:”blue”)","round (7.25)", "onmouseclick","v carName;"];
 
-      var answersb = ["question 1", "question 2","question 3","question 4","question 5","question 6","question 7","question 8",
-      "question 9","question 10", ];
+      var answersb = ["<javascript>", "function:myFunction()", "myFunction()","if i == 5 then","for (i =0; i <= 5; i++)","<!--This is a comment -->",
+      "var colors = 1 = (“red”), 2 = (“green”)","Math.rnd(7.25)", "onchange","var carName", ];
 
-      var answersc = ["question 1", "question 2","question 3","question 4","question 5","question 6","question 7","question 8",
-      "question 9","question 10", ];
+      var answersc = ["<js>", "function = myFunction()", "call myFunction()","if i = 5 then","for (i <= 5; i++)","//This is a comment",
+      "3 = (blue, red, white ) var colors", "Math.round(7.25)", "onmouseover","variable carName;", ];
 
-      var answersd = ["question 1", "question 2","question 3","question 4","question 5","question 6","question 7","question 8",
-      "question 9","question 10", ];
+      var answersd = ["<scripting>", "func myFunction()", "call function myFunction()","if (i == 5)","for (i = 0; i <= 5)","**This is a comment**",
+      "var colors = [“red”, “green”, “blue”]","rnd(7.25)", "onclick","v (carName);", ];
 
 var scores = JSON.parse(localStorage.getItem("player: ")) || [];
 var questionumber = 1;
 var currentscore = 0;
 var stopTimer = false;
+clear.addEventListener("click", function (){
+
+    localStorage.clear();
+})
 
 // this is the code that is gonna start running when the user clicks on the "let's start button"
 function test () {
@@ -64,7 +78,7 @@ function test () {
                           // following code creates the timer
                           var timer = document.createElement("h3");
                           body.appendChild(timer);
-                          var timeleft = 60;
+                          var timeleft = 110;
              
                           function seTime() {
                              var timeinterval = setInterval(() => {
@@ -123,7 +137,12 @@ function test () {
                     }
 
                  render();
-                 
+
+
+                 goback.addEventListener("click", function () {
+                    location.reload()
+                 })
+
                 aa.addEventListener("click", function  (event) {
 
                     event.preventDefault();
@@ -132,7 +151,10 @@ function test () {
                     console.log(scores);
                     save();
                     render();
-
+                    input.setAttribute("style", "display: none;")
+                    aa.setAttribute("style", "display: none;");
+                    goback.setAttribute("style", "visibility: visible")
+                    clear.setAttribute("style", "visibility: visible")
 
                 })
             }
@@ -142,14 +164,14 @@ function test () {
              var Answers = [optionA, optionB, optionC, optionD];
              var correctanswer = [
                 "optionA", // Correct answer for question 1
-                "optionB", // Correct answer for question 2
-                "optionC", // Correct answer for question 3
+                "optionA", // Correct answer for question 2
+                "optionB", // Correct answer for question 3
                 "optionD", // Correct answer for question 4
-                "optionA", // Correct answer for question 5
-                "optionB", // Correct answer for question 6
-                "optionC", // Correct answer for question 7
-                "optionD", // Correct answer for question 8
-                "optionA", // Correct answer for question 9
+                "optionB", // Correct answer for question 5
+                "optionC", // Correct answer for question 6
+                "optionD", // Correct answer for question 7
+                "optionC", // Correct answer for question 8
+                "optionD", // Correct answer for question 9
                 "optionB"  // Correct answer for question 10
               ];
 
@@ -201,12 +223,31 @@ function test () {
 
 // this code will deploy and present the leaderboard to the user
 function scoreboard() {
+
      title.textContent = "Top-Scores";
     presentation.textContent = "";
+    goback.setAttribute("style", "visibility: visible");
     buttons.setAttribute("style", "visibility: hidden;"); 
+    clear.setAttribute("style", "visibility: visible")
+
+    var submision = document.createElement("ol");
+    submision.classList.add("leaderboard");
+    questions.appendChild(submision);
+
+    function render() {
+        var lastry = JSON.parse(localStorage.getItem("player: ")) || [];
+        if (lastry !== null) {
+            for (var i = 0; i < lastry.length; i++) {
+                var attempt = document.createElement("li");
+                attempt.textContent = lastry[i];
+                submision.appendChild(attempt);
+            }
+        }
+    }
+
+    render();
 }
-
-
+                   
 // this are the event listeners, depending of which button the user clicks, a different block of code will deploy
 start.addEventListener("click", function () {
     userScore = 0; 
